@@ -9,7 +9,16 @@ A multi-page invoice generator built with React, Vite, and Tailwind CSS v4.
 - Print / Print Preview functionality.
 - Download as PDF.
 
-## How to Run
+## Deployment
+
+This project is configured to automatically deploy to GitHub Pages via GitHub Actions when you push to the `main` branch.
+
+To enable this:
+1. Go to your repository settings on GitHub.
+2. Navigate to **Pages** in the left sidebar.
+3. Under **Build and deployment > Source**, select **GitHub Actions**.
+
+## How to Run Locally
 
 1.  **Install Dependencies**:
     ```bash

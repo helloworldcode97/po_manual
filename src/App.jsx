@@ -30,6 +30,11 @@ function App() {
 
   const handleDownload = () => {
     const element = invoiceRef.current;
+    if (!element) {
+      console.error('Invoice element not found');
+      return;
+    }
+
     const opt = {
       margin: 0,
       filename: `Invoice_${formData.noNota || 'draft'}.pdf`,
@@ -37,7 +42,21 @@ function App() {
       html2canvas: { scale: 2 },
       jsPDF: { unit: 'mm', format: 'a5', orientation: 'landscape' }
     };
-    html2pdf().set(opt).from(element).save();
+
+    try {
+      // Robust check for different import styles of html2pdf.js
+      const generator = typeof html2pdf === 'function' ? html2pdf : (html2pdf && html2pdf.default);
+
+      if (typeof generator === 'function') {
+        generator().set(opt).from(element).save();
+      } else {
+        console.error('html2pdf library is not loaded correctly:', html2pdf);
+        alert('PDF Download is currently unavailable. Please use the Print button instead.');
+      }
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('An error occurred while generating the PDF.');
+    }
   };
 
   const chunkItems = (items, size) => {
