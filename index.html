@@ -16,22 +16,29 @@
       }
     </style>
     <script>
-      window.onerror = function(message, source, lineno, colno, error) {
+      function reportError(title, detail) {
         var root = document.getElementById('root');
-        if (root && root.innerHTML === '') {
-          root.innerHTML = '<div style="padding: 20px; color: red; font-family: sans-serif;">' +
-            '<h1>Script Error Detected</h1>' +
-            '<p>Error: ' + message + '</p>' +
-            '<p>Source: ' + source + ':' + lineno + ':' + colno + '</p>' +
+        if (root) {
+          root.innerHTML = '<div style="padding: 20px; color: red; font-family: sans-serif; border: 2px solid red; margin: 20px;">' +
+            '<h1>' + title + '</h1>' +
+            '<p>' + detail + '</p>' +
             '<p>URL: ' + window.location.href + '</p>' +
-            '<p>Check console for more details.</p>' +
+            '<p>Please check the browser console (F12) for more details.</p>' +
             '</div>';
         }
+      }
+
+      window.onerror = function(message, source, lineno, colno, error) {
+        reportError('Runtime Error Detected', message + ' at ' + source + ':' + lineno + ':' + colno);
       };
+
+      window.addEventListener('unhandledrejection', function(event) {
+        reportError('Unhandled Promise Rejection', event.reason);
+      });
     </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="./src/main.jsx" onerror="reportError('Script Load Failure', 'Failed to load the main application script (./src/main.jsx). This could be due to a 404 error, CORS issue, or network failure.')"></script>
   </body>
 </html>
