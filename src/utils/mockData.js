@@ -1,5 +1,5 @@
 export const mockProducts = [
-  { id: '1', barcode: '899123456001', name: 'Produk A - Pen 0.5mm Black', sat: 'PCS', harga: 5000 },
+  { id: '1', barcode: '899123456001', name: 'Produk A - Pen 0.5mm Black with Extra Long Name that should definitely wrap into two lines to test the line-clamp-2 styling', sat: 'PCS', harga: 5000 },
   { id: '2', barcode: '899123456002', name: 'Produk B - Notebook A5 Spiral', sat: 'PCS', harga: 15000 },
   { id: '3', barcode: '899123456003', name: 'Produk C - Eraser Dust Free Small', sat: 'PCS', harga: 2000 },
   { id: '4', barcode: '899123456004', name: 'Produk D - Glue Stick 10g', sat: 'PCS', harga: 8000 },

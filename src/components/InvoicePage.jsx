@@ -17,7 +17,7 @@ const InvoicePage = ({ formData, items, pageNum, totalPages, grandTotal }) => {
   };
 
   return (
-    <div className="invoice-page bg-white p-8 mx-auto relative mb-8 shadow-lg print:shadow-none print:m-0" style={{ width: '210mm', height: '148mm', fontSize: '12px', fontFamily: 'Arial, sans-serif' }}>
+    <div className="invoice-page bg-white p-8 mx-auto relative mb-8 shadow-lg print:shadow-none print:m-0" style={{ width: '210mm', height: '148mm', fontSize: '12px', fontFamily: 'Arial, sans-serif', pageBreakAfter: 'always' }}>
       {/* Header */}
       <div className="flex justify-between mb-4">
         <div>
@@ -59,16 +59,18 @@ const InvoicePage = ({ formData, items, pageNum, totalPages, grandTotal }) => {
           </thead>
           <tbody>
             {items.map((item, index) => (
-              <tr key={index} className="h-6">
-                <td className="text-center border-r border-black">{(pageNum - 1) * 8 + index + 1}</td>
-                <td className="text-left px-1 border-r border-black overflow-hidden">{item.barcode}</td>
-                <td className="text-left px-1 border-r border-black truncate">{item.name}</td>
-                <td className="text-center border-r border-black">{item.qty}</td>
-                <td className="text-center border-r border-black">{item.sat}</td>
-                <td className="text-right px-1 border-r border-black">{(item.harga || 0).toLocaleString()}</td>
-                <td className="text-center border-r border-black">{item.disc_p || 0}</td>
-                <td className="text-right px-1 border-r border-black">{(item.disc_rp || 0).toLocaleString()}</td>
-                <td className="text-right px-1">{(item.jumlah || (item.harga * item.qty)).toLocaleString()}</td>
+              <tr key={index} className="min-h-[24px]">
+                <td className="text-center border-r border-black py-1">{(pageNum - 1) * 8 + index + 1}</td>
+                <td className="text-left px-1 border-r border-black overflow-hidden text-[10px] py-1">{item.barcode}</td>
+                <td className="text-left px-1 border-r border-black leading-tight py-1">
+                  <div className="line-clamp-2" title={item.name}>{item.name}</div>
+                </td>
+                <td className="text-center border-r border-black py-1">{item.qty}</td>
+                <td className="text-center border-r border-black py-1">{item.sat}</td>
+                <td className="text-right px-1 border-r border-black py-1">{(item.harga || 0).toLocaleString()}</td>
+                <td className="text-center border-r border-black py-1">{item.disc_p || 0}</td>
+                <td className="text-right px-1 border-r border-black py-1">{(item.disc_rp || 0).toLocaleString()}</td>
+                <td className="text-right px-1 py-1">{(item.jumlah || (item.harga * item.qty)).toLocaleString()}</td>
               </tr>
             ))}
             {/* Fill empty rows if less than 8 */}
