@@ -8,10 +8,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/po_manual/', // Explicitly setting base to match the GitHub repository name
+  base: './', // Using relative paths for better compatibility across different hosting environments
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
     emptyOutDir: true,
   }
 })
