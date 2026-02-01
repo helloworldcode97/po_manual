@@ -1,9 +1,0 @@
- INFO  Accepting connections at http://localhost:41132
- HTTP  2/1/2026 7:45:57 PM ::1 GET /
- HTTP  2/1/2026 7:45:57 PM ::1 Returned 200 in 37 ms
- HTTP  2/1/2026 7:45:57 PM ::1 GET /assets/index-CybNuGoh.js
- HTTP  2/1/2026 7:45:57 PM ::1 GET /assets/index-D08yaAc1.css
- HTTP  2/1/2026 7:45:57 PM ::1 Returned 200 in 5 ms
- HTTP  2/1/2026 7:45:57 PM ::1 Returned 200 in 25 ms
-
- INFO  Gracefully shutting down. Please wait...

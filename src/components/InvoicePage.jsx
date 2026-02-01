@@ -24,19 +24,19 @@ const InvoicePage = ({ formData, items, pageNum, totalPages, grandTotal }) => {
           <h1 className="text-2xl font-bold border-l-4 border-black pl-2 leading-none mb-1">INVOICE</h1>
           <p className="font-bold text-sm">CV NIO UTAMAN</p>
           <div className="mt-4 grid grid-cols-[100px_10px_1fr] gap-x-1">
-            <span>NO. NOTA</span><span>:</span><span className="border-b border-dotted border-gray-400 min-w-[100px]">{formData.noNota || '@'}</span>
-            <span>JTH. TEMPO</span><span>:</span><span className="border-b border-dotted border-gray-400 min-w-[100px]">{formatDate(formData.jthTempo) || '@'}</span>
-            <span>MEMO</span><span>:</span><span className="border-b border-dotted border-gray-400 min-w-[100px]">{formData.memo || '@'}</span>
+            <span>NO. NOTA</span><span>:</span><span className="border-b border-dotted border-gray-400 min-w-[100px]">{formData.noNota || ''}</span>
+            <span>JTH. TEMPO</span><span>:</span><span className="border-b border-dotted border-gray-400 min-w-[100px]">{formatDate(formData.jthTempo) || ''}</span>
+            <span>MEMO</span><span>:</span><span className="border-b border-dotted border-gray-400 min-w-[100px]">{formData.memo || ''}</span>
           </div>
         </div>
         <div className="text-right">
           <p className="font-bold uppercase">BANJARMASIN, {formatDate(formData.tanggal) || '{Tanggal}'}</p>
           <div className="mt-1 text-left inline-block">
-             <p>Kepada Yth : @</p>
-             <p className="font-bold text-base leading-tight">{(formData.kepadaYth || '@').toUpperCase()}</p>
-             <p className="mt-2">@ {formData.info1 || ''}</p>
-             <p>@ {formData.info2 || ''}</p>
-             <p className="mt-2 font-bold">Sales : {formData.sales || '@'}</p>
+             <p>Kepada Yth :</p>
+             <p className="font-bold text-base leading-tight">{(formData.kepadaYth || '').toUpperCase()}</p>
+             <p className="mt-2">{formData.info1 || ''}</p>
+             <p>{formData.info2 || ''}</p>
+             <p className="mt-2 font-bold">Sales : {formData.sales || ''}</p>
           </div>
         </div>
       </div>
@@ -110,12 +110,12 @@ const InvoicePage = ({ formData, items, pageNum, totalPages, grandTotal }) => {
         </div>
         <div className="text-right">
            <div className="flex justify-between items-center gap-4 mb-2">
-             <span className="font-bold text-sm">GRAND TOTAL :</span>
-             <span className="text-lg font-bold">Rp {grandTotal.toLocaleString()}</span>
+             <span className="font-extrabold text-base">GRAND TOTAL :</span>
+             <span className="text-xl font-extrabold">Rp {grandTotal.toLocaleString()}</span>
            </div>
-           <div className="border-t-2 border-black w-40 ml-auto pt-1">
+           <div className="border-t-2 border-black w-48 ml-auto pt-1">
              <p className="text-[10px]">Hal. {pageNum} / {totalPages}</p>
-             <p className="text-[10px]">CETAK : @ - {formatDateTime(formData.cetakTanggalJam) || '{TanggalJam}'}</p>
+             <p className="text-[10px]">CETAK : {formatDateTime(formData.cetakTanggalJam) || '{TanggalJam}'}</p>
            </div>
         </div>
       </div>
